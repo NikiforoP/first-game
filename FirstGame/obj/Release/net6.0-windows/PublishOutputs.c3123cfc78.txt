@@ -1,0 +1,5 @@
+F:\C++\VS_22_C#\Windows_Forms\FirstGame\FirstGame\FirstGame.exe
+F:\C++\VS_22_C#\Windows_Forms\FirstGame\FirstGame\FirstGame.dll
+F:\C++\VS_22_C#\Windows_Forms\FirstGame\FirstGame\FirstGame.deps.json
+F:\C++\VS_22_C#\Windows_Forms\FirstGame\FirstGame\FirstGame.runtimeconfig.json
+F:\C++\VS_22_C#\Windows_Forms\FirstGame\FirstGame\FirstGame.pdb

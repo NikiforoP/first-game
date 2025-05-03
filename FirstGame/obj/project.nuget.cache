@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rpXcKIkNyTECx8K0eXwFyWab/5kJGkfNss0l9s4yK5fls0OGMWQC6QR0rM5gzV94BgxOgfr6mtm4HLJEQlqgoQ==",
+  "dgSpecHash": "mcBcg7AmpI086UII9NG3Uh9PilkYvp72UEyjB17p4AB0rpZTHozhMTuw9dktsYcyGK2ZOBMllMkH6lhieLokWQ==",
   "success": true,
-  "projectFilePath": "F:\\Программирование С++\\VS_22_C#\\Windows_Forms\\FirstGame\\FirstGame\\FirstGame.csproj",
+  "projectFilePath": "C:\\VS_22_C#\\FirstGame\\FirstGame\\FirstGame.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
