@@ -6,7 +6,7 @@ namespace FirstGame
 {
     public partial class Form1 : Form
     {
-        private string soundFilePath = @"C:\\VS_22_C#\FirstGame\shot.wav";
+        private string soundFilePath = @"C:\VS_22_C#\FirstGame\shot.wav";
         private List<Button> buttons = new List<Button>();
         private Random rand = new Random();
         private double time = 60.0;
@@ -53,8 +53,8 @@ namespace FirstGame
             {
                 using (SoundPlayer player = new SoundPlayer(soundFilePath))
                 {
-                    player.Load(); 
-                    player.Play(); 
+                    player.Load();
+                    player.Play();
                 }
             }
             catch (Exception ex)
