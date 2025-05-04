@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Программирование С++\\VS_22_C#\\Windows_Forms\\FirstGame\\FirstGame\\FirstGame.csproj": {}
+    "C:\\VS_22_C#\\FirstGame\\FirstGame\\FirstGame.csproj": {}
   },
   "projects": {
-    "F:\\Программирование С++\\VS_22_C#\\Windows_Forms\\FirstGame\\FirstGame\\FirstGame.csproj": {
+    "C:\\VS_22_C#\\FirstGame\\FirstGame\\FirstGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Программирование С++\\VS_22_C#\\Windows_Forms\\FirstGame\\FirstGame\\FirstGame.csproj",
+        "projectUniqueName": "C:\\VS_22_C#\\FirstGame\\FirstGame\\FirstGame.csproj",
         "projectName": "FirstGame",
-        "projectPath": "F:\\Программирование С++\\VS_22_C#\\Windows_Forms\\FirstGame\\FirstGame\\FirstGame.csproj",
+        "projectPath": "C:\\VS_22_C#\\FirstGame\\FirstGame\\FirstGame.csproj",
         "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-        "outputPath": "F:\\Программирование С++\\VS_22_C#\\Windows_Forms\\FirstGame\\FirstGame\\obj\\",
+        "outputPath": "C:\\VS_22_C#\\FirstGame\\FirstGame\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -24,7 +24,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows7.0"
+          "net6.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
