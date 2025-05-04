@@ -6,8 +6,8 @@ namespace FirstGame
 {
     public partial class Form1 : Form
     {
-        private string soundGameFilePath = @"F:\C++\VS_22_C#\Windows_Forms\FirstGame\gameMusic.wav";
-        private string soundFilePath = @"F:\C++\VS_22_C#\Windows_Forms\FirstGame\shot.wav";
+        private string soundGameFilePath = @"C:\VS_22_C#\FirstGame\shot.wav";
+        private string soundFilePath = @"C:\VS_22_C#\FirstGame\shot.wav";
         private List<Button> buttons = new List<Button>();
         private Random rand = new Random();
         private double time = 60.0;
@@ -41,27 +41,6 @@ namespace FirstGame
             ++killObject;
             label4.Text = killObject.ToString();
             timer2.Stop();
-        }
-
-        private void soundGame()
-        {
-            if (!System.IO.File.Exists(soundGameFilePath))
-            {
-                MessageBox.Show("Звуковой файл не найден. Проверьте путь.");
-                return;
-            }
-            try
-            {
-                using (SoundPlayer player = new SoundPlayer(soundGameFilePath))
-                {
-                    player.Load();
-                    player.Play();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка воспроизведения звука: {ex.Message}");
-            }
         }
 
         private void soundShot()
