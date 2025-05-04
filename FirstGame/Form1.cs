@@ -6,7 +6,6 @@ namespace FirstGame
 {
     public partial class Form1 : Form
     {
-        private string soundGameFilePath = @"C:\VS_22_C#\FirstGame\shot.wav";
         private string soundFilePath = @"C:\\VS_22_C#\FirstGame\shot.wav";
         private List<Button> buttons = new List<Button>();
         private Random rand = new Random();
