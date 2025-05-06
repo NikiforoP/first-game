@@ -1,6 +1,7 @@
 using System;
 using System.Media;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace FirstGame
 {
@@ -17,54 +18,9 @@ namespace FirstGame
         private int killObject = 0;
         private int step = 25;
 
-        private void nextPositionTarget(Button button)
-        {
-            int xRand = (rand.Next(50 / step, (450 / step) + 1)) * step;
-            int yRand = (rand.Next(50 / step, (450 / step) + 1)) * step;
-            var findButtonX = buttons.Where(button => button.Location.X == xRand).ToList();
-            var findButtonY = buttons.Where(button => button.Location.Y == yRand).ToList();
-            if (findButtonX.Count() != 0 || findButtonY.Count() != 0)
-            {
-                nextPositionTarget(button);
-            }
-            else
-            {
-                button.Location = new Point(xRand, yRand);
-            }
-        }
-
-        private void kill(Button button)
-        {
-            button2.Location = new Point(button1.Location.X + 25, button1.Location.Y);
-            nextPositionTarget(button);
-            ++killObject;
-            label4.Text = killObject.ToString();
-            timer2.Stop();
-        }
-
-        private void soundShot()
-        {
-            if (!System.IO.File.Exists(soundFilePath))
-            {
-                MessageBox.Show("Звуковой файл не найден. Проверьте путь.");
-                return;
-            }
-            try
-            {
-                using (SoundPlayer player = new SoundPlayer(soundFilePath))
-                {
-                    player.Load(); 
-                    player.Play(); 
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка воспроизведения звука: {ex.Message}");
-            }
-        }
-
         private void startGame()
         {
+            InitializeButton();
             nextPositionTarget(button3);
             buttons.Add(button3);
             nextPositionTarget(button4);
@@ -96,8 +52,82 @@ namespace FirstGame
         public Form1()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
             startGame();
+        }
+
+        private void InitializeButton()
+        {
+            GraphicsPath myPath = new GraphicsPath();
+            myPath.AddEllipse(0, 0, button2.Width, button2.Height); 
+            button2.Region = new Region(myPath);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.FlatAppearance.BorderSize = 0;
+        }
+        private void nextPositionTarget(Button button)
+        {
+            int xRand = (rand.Next(50 / step, (450 / step) + 1)) * step;
+            int yRand = (rand.Next(50 / step, (450 / step) + 1)) * step;
+            var findButtonX = buttons.Where(button => button.Location.X == xRand).ToList();
+            var findButtonY = buttons.Where(button => button.Location.Y == yRand).ToList();
+            if (findButtonX.Count() != 0 || findButtonY.Count() != 0)
+            {
+                nextPositionTarget(button);
+            }
+            else
+            {
+                button.Location = new Point(xRand, yRand);
+            }
+        }
+
+        private void kill(Button button)
+        {
+            button2.Location = new Point(button1.Location.X + 25, button1.Location.Y);
+            nextPositionTarget(button);
+            ++killObject;
+            label4.Text = killObject.ToString();
+            timer2.Stop();
+        }
+
+        private void soundGame()
+        {
+            if (!System.IO.File.Exists(soundFilePath))
+            {
+                MessageBox.Show("Звуковой файл не найден. Проверьте путь.");
+                return;
+            }
+            try
+            {
+                using (SoundPlayer player = new SoundPlayer(soundFilePath))
+                {
+                    player.Load();
+                    player.Play();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка воспроизведения звука: {ex.Message}");
+            }
+        }
+
+        private void soundShot()
+        {
+            if (!System.IO.File.Exists(soundFilePath))
+            {
+                MessageBox.Show("Звуковой файл не найден. Проверьте путь.");
+                return;
+            }
+            try
+            {
+                using (SoundPlayer player = new SoundPlayer(soundFilePath))
+                {
+                    player.Load(); 
+                    player.Play(); 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка воспроизведения звука: {ex.Message}");
+            }
         }
 
         private void button1_KeyUp(object sender, KeyEventArgs e)
@@ -161,53 +191,21 @@ namespace FirstGame
         {
             if (time != 0 && timer2.Enabled)
             {
-                if (button2.Location == button3.Location)
+                foreach (Button button in buttons)
                 {
-                    kill(button3);
+                    if (button2.Location == button.Location)
+                    {
+                        kill(button);
+                        timer2.Stop();
+                    }
                 }
-                else
-                if (button2.Location == button4.Location)
-                {
-                    kill(button4);
-                }
-                else
-                if (button2.Location == button5.Location)
-                {
-                    kill(button5);
-                }
-                else
-                if (button2.Location == button6.Location)
-                {
-                    kill(button6);
-                }
-                else
-                if (button2.Location == button7.Location)
-                {
-                    kill(button7);
-                }
-                else
-                if (button2.Location == button8.Location)
-                {
-                    kill(button8);
-                }
-                else
-                if (button2.Location == button9.Location)
-                {
-                    kill(button9);
-                }
-                else
-                if (button2.Location == button10.Location)
-                {
-                    kill(button10);
-                }
-                else
-                if (button2.Location.Y == 0)
+                if (button2.Location.Y == 0 && timer2.Enabled)
                 {
                     button2.Location = new Point(button1.Location.X + 25, button1.Location.Y);
                     timer2.Stop();
                 }
                 else
-                if (button2.Location.Y != 0)
+                if (button2.Location.Y != 0 && timer2.Enabled)
                 {
                     if (button2.Location.Y == 480)
                     {
@@ -215,10 +213,6 @@ namespace FirstGame
                     }
                     button2.Location = new Point(button2.Location.X, button2.Location.Y - 5);
                 }
-            }
-            else
-            {
-                timer2.Stop();
             }
         }
     }
