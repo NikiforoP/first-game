@@ -1,1 +1,1 @@
-# first game
+# first-game
