@@ -46,6 +46,7 @@
             this.button10 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -199,12 +200,23 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "0";
             // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.Lime;
+            this.button11.Enabled = false;
+            this.button11.Location = new System.Drawing.Point(250, 100);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(25, 25);
+            this.button11.TabIndex = 16;
+            this.button11.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(525, 505);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button10);
@@ -228,13 +240,14 @@
         }
 
         #endregion
-
-        private Button button1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
         private Label label1;
         private Label label2;
+        private Label label3;
+        private Label label4;
         private Button button2;
-        private System.Windows.Forms.Timer timer2;
+        private Button button1;
         private Button button3;
         private Button button4;
         private Button button5;
@@ -243,7 +256,6 @@
         private Button button8;
         private Button button9;
         private Button button10;
-        private Label label3;
-        private Label label4;
+        private Button button11;
     }
 }

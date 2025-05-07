@@ -37,6 +37,7 @@ namespace FirstGame
             buttons.Add(button9);
             nextPositionTarget(button10);
             buttons.Add(button10);
+            nextPositionMob(button11);
             button2.Location = new System.Drawing.Point(button1.Location.X + 25, button1.Location.Y);
             label2.Text = time.ToString();
             label4.Text = killObject.ToString();
@@ -63,10 +64,13 @@ namespace FirstGame
             button2.FlatStyle = FlatStyle.Flat;
             button2.FlatAppearance.BorderSize = 0;
         }
+
         private void nextPositionTarget(Button button)
         {
-            int xRand = (rand.Next(50 / step, (450 / step) + 1)) * step;
-            int yRand = (rand.Next(50 / step, (450 / step) + 1)) * step;
+            int formWidth = this.ClientSize.Width;
+            int formHeight = this.ClientSize.Height;
+            int xRand = rand.Next(50 / step, (formWidth - button.Width) / step) * step;
+            int yRand = rand.Next(50 / step, (formHeight - button.Width) / step) * step;
             var findButtonX = buttons.Where(button => button.Location.X == xRand).ToList();
             var findButtonY = buttons.Where(button => button.Location.Y == yRand).ToList();
             if (findButtonX.Count() != 0 || findButtonY.Count() != 0)
@@ -79,10 +83,37 @@ namespace FirstGame
             }
         }
 
+        private void nextPositionMob(Button button)
+        {
+            int formWidth = this.ClientSize.Width;
+            int formHeight = this.ClientSize.Height;
+            int xRand = rand.Next(50 / step, (formWidth - button.Width) / step) * step;
+            int yRand = rand.Next(50 / step, ((formHeight - button.Height) / step) / 2) * step;
+            var findButtonX = buttons.Where(button => button.Location.X == xRand).ToList();
+            var findButtonY = buttons.Where(button => button.Location.Y == yRand).ToList();
+            if (findButtonX.Count() != 0 || findButtonY.Count() != 0)
+            {
+                nextPositionMob(button);
+            }
+            else
+            {
+                button.Location = new Point(xRand, yRand);
+            }
+        }
+
         private void kill(Button button)
         {
-            button2.Location = new Point(button1.Location.X + 25, button1.Location.Y);
+            button2.Location = new Point(button1.Location.X + step, button1.Location.Y);
             nextPositionTarget(button);
+            ++killObject;
+            label4.Text = killObject.ToString();
+            timer2.Stop();
+        }
+
+        private void killMob(Button button)
+        {
+            button2.Location = new Point(button1.Location.X + step, button1.Location.Y);
+            nextPositionMob(button);
             ++killObject;
             label4.Text = killObject.ToString();
             timer2.Stop();
@@ -138,7 +169,7 @@ namespace FirstGame
                 if ((button1.Location.X == button2.Location.X - 50) &&
                     (button1.Location.Y == button2.Location.Y))
                 {
-                    button2.Location = new Point(button1.Location.X + 25, button1.Location.Y);
+                    button2.Location = new Point(button1.Location.X + step, button1.Location.Y);
                 }
             }
             else if (e.KeyCode == Keys.Right && button1.Right + step <= this.ClientSize.Width)
@@ -146,7 +177,7 @@ namespace FirstGame
                 button1.Location = new Point(button1.Location.X + step, button1.Location.Y);
                 if (button1.Location == button2.Location)
                 {
-                    button2.Location = new Point(button1.Location.X + 25, button1.Location.Y);
+                    button2.Location = new Point(button1.Location.X + step, button1.Location.Y);
                 }
             }
             else
@@ -199,9 +230,16 @@ namespace FirstGame
                         timer2.Stop();
                     }
                 }
+
+                if (button11.Location == button2.Location)
+                {
+                    killMob(button11);
+                    timer2.Stop();
+                }
+
                 if (button2.Location.Y == 0 && timer2.Enabled)
                 {
-                    button2.Location = new Point(button1.Location.X + 25, button1.Location.Y);
+                    button2.Location = new Point(button1.Location.X + step, button1.Location.Y);
                     timer2.Stop();
                 }
                 else
